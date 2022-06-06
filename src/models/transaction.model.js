@@ -1,6 +1,6 @@
 const dbConnection = require("../../config/db.config");
 
-const Transaction = (transaction) => {
+const Transaction = function (transaction) {
   this.customer_id = transaction.customer_id;
   this.customer_name = transaction.customer_name;
   this.input_currency = transaction.input_currency;
@@ -15,14 +15,33 @@ const Transaction = (transaction) => {
 Transaction.getAllTransactions = (result) => {
   dbConnection.query("SELECT * FROM transactions", (err, res) => {
     if (err) {
-      console.log("getAllTransactions error: ", err);
       result(null, err);
       return;
     }
 
-    console.log("transactions: ", res);
     result(null, res);
   });
+};
+
+// create new transaction
+Transaction.createTransaction = (transaction, result) => {
+  dbConnection.query(
+    "INSERT INTO transactions SET ?",
+    transaction,
+    (err, res) => {
+      if (err) {
+        console.log("createTransaction error: ", err);
+        result(null, err);
+        return;
+      }
+
+      result(null, {
+        status: true,
+        message: "Transaction created successfully!",
+        transactionId: res.insertId,
+      });
+    }
+  );
 };
 
 module.exports = Transaction;
