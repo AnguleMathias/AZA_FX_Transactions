@@ -1,16 +1,16 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
 
 // create a connection to the database
 const connection = mysql.createConnection({
-  host: process.env.DATABASE_HOST,
-  user: process.env.DATABASE_USERNAME,
-  port: process.env.DATABASE_PORT,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE_NAME,
+  host: "localhost",
+  user: "root",
+  port: "3306",
+  password: "password",
+  database: "aza_fx_transactions_db",
 });
 
 connection.connect((err) => {
-  if (err) throw error;
+  if (err) throw err;
   console.log("Database connection established!!");
 });
 
