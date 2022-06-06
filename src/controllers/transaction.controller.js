@@ -33,3 +33,18 @@ exports.createTransaction = (req, res) => {
     else res.send(data);
   });
 };
+
+// get transaction by id
+exports.getTransactionById = (req, res) => {
+  TransactionModel.getTransactionById(req.params.id, (err, data) => {
+    if (err) {
+      res.status(500).send({
+        message: "Error retrieving Transaction with id: " + req.params.id,
+      });
+    } else if (data.length === 0) {
+      res.status(404).send({
+        message: `Transaction not found with id ${req.params.id}`,
+      });
+    } else res.send(data);
+  });
+};
