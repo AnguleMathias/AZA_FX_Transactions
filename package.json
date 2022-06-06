@@ -4,12 +4,18 @@
   "description": "Microservice to store FX transactions",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "source .env; nodemon index"
+    "start": "source .env; nodemon index",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AnguleMathias/AZA_FX_Transactions.git"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "author": "Mathias Angule",
   "license": "ISC",
@@ -24,6 +30,7 @@
     "mysql2": "^2.3.3"
   },
   "devDependencies": {
+    "jest": "^28.1.0",
     "nodemon": "^2.0.16"
   }
 }
