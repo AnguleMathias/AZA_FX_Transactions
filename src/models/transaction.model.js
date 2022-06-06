@@ -30,7 +30,6 @@ Transaction.createTransaction = (transaction, result) => {
     transaction,
     (err, res) => {
       if (err) {
-        console.log("createTransaction error: ", err);
         result(null, err);
         return;
       }
@@ -40,6 +39,25 @@ Transaction.createTransaction = (transaction, result) => {
         message: "Transaction created successfully!",
         transactionId: res.insertId,
       });
+    }
+  );
+};
+
+// get transaction by id
+Transaction.getTransactionById = (id, result) => {
+  dbConnection.query(
+    "SELECT * FROM transactions WHERE id=?",
+    id,
+    (err, res) => {
+      if (err) {
+        result({
+          status: false,
+          message: `Error retrieving Transaction with id ${id}`,
+        });
+        return;
+      }
+
+      result(null, res);
     }
   );
 };
