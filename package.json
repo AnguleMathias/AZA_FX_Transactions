@@ -1,0 +1,20 @@
+{
+  "name": "aza_fx_transactions",
+  "version": "1.0.0",
+  "description": "Microservice to store FX transactions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnguleMathias/AZA_FX_Transactions.git"
+  },
+  "author": "Mathias Angule",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnguleMathias/AZA_FX_Transactions/issues"
+  },
+  "homepage": "https://github.com/AnguleMathias/AZA_FX_Transactions#readme"
+}
